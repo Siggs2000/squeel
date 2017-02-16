@@ -137,7 +137,8 @@ module Squeel
             association_joins,
             join_list
           )
-
+          self.join_dependency.instance_variable_set(:@alias_tracker, nil)
+          
           join_dependency.graft(*stashed_association_joins)
 
           @implicit_readonly = true unless association_joins.empty? && stashed_association_joins.empty?
